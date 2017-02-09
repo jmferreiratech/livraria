@@ -9,6 +9,20 @@
     <name>livraria-site Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+    <build>
+        <finalName>livraria-site</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -19,7 +33,7 @@
         <dependency>
             <groupId>br.com.caelum</groupId>
             <artifactId>vraptor</artifactId>
-            <version>3.5.5</version>
+            <version>3.5.1</version>
         </dependency>
         <dependency>
             <groupId>opensymphony</groupId>
@@ -62,8 +76,4 @@
             <version>1.4.9</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>livraria-site</finalName>
-    </build>
 </project>
