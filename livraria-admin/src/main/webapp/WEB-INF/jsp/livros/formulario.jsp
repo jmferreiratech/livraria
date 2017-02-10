@@ -1,4 +1,5 @@
 <form action="${linkTo[LivrosController].salva}" method="post">
+    <input type="hidden" name="livro.id" value="${livro.id}"/>
     <h2>Formulário de cadastro de livros</h2>
     <ul>
         <li>Titulo: <br/>
