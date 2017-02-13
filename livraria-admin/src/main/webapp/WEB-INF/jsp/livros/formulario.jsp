@@ -1,3 +1,10 @@
+<ul class="errors">
+    <c:forEach items="${errors}" var="error">
+        <li>
+                ${error.category}: ${error.message}
+        </li>
+    </c:forEach>
+</ul>
 <form action="${linkTo[LivrosController].salva}" method="post">
     <input type="hidden" name="livro.id" value="${livro.id}"/>
     <h2>Formulário de cadastro de livros</h2>
