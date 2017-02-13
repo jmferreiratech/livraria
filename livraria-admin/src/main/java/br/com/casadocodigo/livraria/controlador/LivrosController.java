@@ -12,15 +12,17 @@ import java.util.List;
 public class LivrosController {
 
     private Estante estante;
+    private Result result;
 
-    public LivrosController(Estante estante) {
+    public LivrosController(Estante estante, Result result) {
         this.estante = estante;
+        this.result = result;
     }
 
     public void formulario() {
     }
 
-    public void salva(Livro livro, Result result) {
+    public void salva(Livro livro) {
         estante.guarda(livro);
         result.include("mensagem", "Livro salvo com sucesso!");
         result.redirectTo(this).lista();
@@ -30,9 +32,13 @@ public class LivrosController {
         return estante.todosOsLivros();
     }
 
-    public void edita(String isbn, Result result) {
+    public void edita(String isbn) {
         Livro livroEncontrado = estante.buscaPorIsbn(isbn);
-        result.include(livroEncontrado);
-        result.of(this).formulario();
+        if (null == livroEncontrado) {
+            result.notFound();
+        } else {
+            result.include(livroEncontrado);
+            result.of(this).formulario();
+        }
     }
 }
