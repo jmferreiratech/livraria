@@ -10,6 +10,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.math.BigDecimal;
+import java.net.URI;
 import java.util.Calendar;
 
 @Entity
@@ -30,6 +31,7 @@ public class Livro {
     private Calendar dataPublicacao;
 
     private String descricao;
+    private String capa;
 
     public String getTitulo() {
         return titulo;
@@ -77,5 +79,14 @@ public class Livro {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public URI getCapa() {
+        if (capa == null) return null;
+        return URI.create(capa);
+    }
+
+    public void setCapa(URI capa) {
+        this.capa = capa == null ? null : capa.toString();
     }
 }
