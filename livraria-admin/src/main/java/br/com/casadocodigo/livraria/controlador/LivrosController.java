@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.interceptor.download.ByteArrayDownload;
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
+import br.com.casadocodigo.livraria.aspecto.Transactional;
 import br.com.casadocodigo.livraria.modelo.Arquivo;
 import br.com.casadocodigo.livraria.modelo.Diretorio;
 import br.com.casadocodigo.livraria.modelo.Estante;
@@ -40,6 +41,7 @@ public class LivrosController {
     public void formulario() {
     }
 
+    @Transactional
     @Post("/livros")
     public void salva(Livro livro, UploadedFile capa) throws IOException {
         validator.validate(livro);

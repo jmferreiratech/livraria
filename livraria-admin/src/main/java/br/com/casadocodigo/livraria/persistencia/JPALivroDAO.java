@@ -17,13 +17,11 @@ public class JPALivroDAO implements LivroDAO {
 
     @Override
     public void adiciona(Livro livro) {
-        this.manager.getTransaction().begin();
         if (null == livro.getId()) {
             manager.persist(livro);
         } else {
             manager.merge(livro);
         }
-        this.manager.getTransaction().commit();
     }
 
     @Override
