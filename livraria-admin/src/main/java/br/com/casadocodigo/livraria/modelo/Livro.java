@@ -3,13 +3,11 @@ package br.com.casadocodigo.livraria.modelo;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.math.BigDecimal;
 import java.net.URI;
 import java.util.Calendar;
 
@@ -24,9 +22,8 @@ public class Livro {
     private String isbn;
     @NotEmpty(message = "{campo.obrigatorio}")
     private String titulo;
-    @NotNull
-    @DecimalMin("0.0")
-    private BigDecimal preco;
+    @Embedded
+    private Dinheiro preco;
     @Past
     private Calendar dataPublicacao;
 
@@ -57,11 +54,11 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    public BigDecimal getPreco() {
+    public Dinheiro getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(Dinheiro preco) {
         this.preco = preco;
     }
 
